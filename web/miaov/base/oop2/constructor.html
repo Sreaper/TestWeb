@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>constructor</title>
+</head>
+<script>
+	function Person(name){
+		this.name = name;
+	}
+
+	var p = new Person("szm");
+	Person.prototype = {
+
+	};
+	console.log(Person);
+	console.log(Person.prototype);
+	console.log(p.constructor);
+</script>
+<body>
+
+</body>
+</html>

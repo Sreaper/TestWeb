@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<style>
+		.active {
+			background: red
+		}
+
+		#div1 div {
+			width: 200px;
+			height: 200px;
+			border: 1px #000 solid;
+			display: none
+		}
+
+	</style>
+	<script>
+		//面向对象的原则
+		// 对于普通方法 函数尽量不要进行嵌套的使用，可以有全局的变量，打load中不是赋值的语句放到一个函数中（init）
+		var adiv = null;
+		var inputs = null;
+		var divs = null;
+		window.onload = function () {
+			assign();
+			init();
+		}
+		function assign() {
+			adiv = document.getElementById("div1");
+			inputs = adiv.getElementsByTagName("input");
+			divs = adiv.getElementsByTagName("div");
+
+		}
+		function init() {
+			for (var i = 0; i < inputs.length; i++) {
+				inputs[i].index = i;
+				inputs[i].onclick = change;
+			}
+		}
+		function change() {
+			for (var i = 0; i < divs.length; i++) {
+				divs[i].style.display = "none";
+				inputs[i].className = "";
+			}
+			this.className = "active";
+			divs[this.index].style.display = "block";
+		}
+	</script>
+</head>
+<body>
+<div id="div1">
+	<input type="button" value="1" class="active">
+	<input type="button" value="2">
+	<input type="button" value="3">
+
+	<div style="display: block">111</div>
+	<div>222</div>
+	<div>333</div>
+</div>
+</body>
+</html>

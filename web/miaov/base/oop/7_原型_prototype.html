@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>prototype</title>
+	<script>
+		//原型的作用：去改写对象下面公用的方法和属性，让公用的方法和属性在内容中只存在一份.(提高性能，防止内存溢出)
+		//原型的构造：必须由向对应的构造函数来进行构造(构造函数.prototype.方法/属性/对象)
+		function CreatePerson(name) {
+			this.name = name;
+		}
+		CreatePerson.prototype.show = function(){
+			alert(this.name);
+		}
+		var p1 = new CreatePerson("小明");
+		var p2 = new CreatePerson("小强");
+		alert(p1.name);
+		alert(p2.name);
+		alert(p1.show == p2.show);
+	</script>
+</head>
+<body>
+
+</body>
+</html>

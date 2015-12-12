@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>drag</title>
+</head>
+<style>
+	body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+		margin: 0;
+		padding: 0;
+	}
+
+	body, button, input, select, textarea {
+		font: 12px/1.5 tahoma, arial, \5b8b\4f53;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-size: 100%;
+	}
+
+	address, cite, dfn, em, var {
+		font-style: normal;
+	}
+
+	code, kbd, pre, samp {
+		font-family: couriernew, courier, monospace;
+	}
+
+	small {
+		font-size: 12px;
+	}
+
+	ul, ol {
+		list-style: none;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	sup {
+		vertical-align: text-top;
+	}
+
+	sub {
+		vertical-align: text-bottom;
+	}
+
+	legend {
+		color: #000;
+	}
+
+	fieldset, img {
+		border: 0;
+	}
+
+	button, input, select, textarea {
+		font-size: 100%;
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	 
+</style>
+<style>
+	#div1 {
+		padding: 5px;
+		margin: 5px;
+		background: red;
+		border: 1px solid;
+		position: absolute;
+		width: 100px;
+		height: 100px
+	}
+
+	#div2 {
+		padding: 10px;
+		left: 10px;
+		background: red;
+		border: 5px solid;
+		position: relative;
+		width: 100px;
+		height: 100px
+	}
+
+</style>
+<script src="../../../js/jquery-2.0.3.js"></script>
+<script>
+	var divX = 0;
+	var divY = 0;
+	var oDiv = null;
+	window.onload = function () {
+		oDiv = document.getElementById("div1");
+		init();
+	}
+	function init() {
+		oDiv.onmousedown = fnDown;
+	};
+	function fnDown (e) {
+		divX = e.clientX - div1.offsetLeft;  //获得鼠标对元素div1的左右的偏移量
+		divY = e.clientY - div1.offsetTop;   //获得鼠标对元素div1的上下的偏移量
+		document.onmousemove = fnMove;
+		document.onmouseup = fnUp;
+	}
+	function fnMove(e) {
+		var l = e.clientX - divX;
+		var t = e.clientY - divY;
+		if (l < 0) {
+			l = 0 - parseFloat($("#div1").css("margin"));
+		}
+		//可以针对是offsetParent的方式来进行处理
+		var offsetParent = oDiv.offsetParent;
+		if (l > offsetParent.clientWidth - oDiv.offsetWidth) {
+			l = offsetParent.clientWidth - oDiv.offsetWidth - parseFloat($("#div1").css("margin"));
+		}
+		if (t > offsetParent.clientHeight - oDiv.offsetHeight) {
+			t = offsetParent.clientHeight - oDiv.offsetHeight - parseFloat($("#div1").css("margin"));
+		}
+		if (t < 0) {
+			t = 0 - parseFloat($("#div1").css("margin"));
+		}
+		oDiv.style.left = l + "px";
+		oDiv.style.top = t + "px";
+	}
+	function fnUp(e) {
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+</script>
+<script>
+	window.onload = function(){
+	   var drag = new Drag("div1");
+		drag.init();
+	}
+
+	function  Drag(id){
+		this.oDiv = document.getElementById(id);
+		this.init();
+	}
+	Drag.prototype.init = function(){
+		var _this = this;
+		this.oDiv.onmousedown = function(e){
+			_this.fnDown(e);
+		}
+	}
+	Drag.prototype.fnDown = function (e) {
+		var _this = this;
+		divX = e.clientX - this.oDiv.offsetLeft;  //获得鼠标对元素div1的左右的偏移量
+		divY = e.clientY - this.oDiv.offsetTop;   //获得鼠标对元素div1的上下的偏移量
+		document.onmousemove = function(e){
+			_this.fnMove(e);
+		}
+		document.onmouseup = fnUp;
+	}
+	Drag.prototype.fnMove = function(e) {
+		var l = e.clientX - divX;
+		var t = e.clientY - divY;
+		if (l < 0) {
+			l = 0 - parseFloat($("#div1").css("margin"));
+		}
+		//可以针对是offsetParent的方式来进行处理
+		var offsetParent = this.oDiv.offsetParent;
+		if (l > offsetParent.clientWidth - this.oDiv.offsetWidth) {
+			l = offsetParent.clientWidth - this.oDiv.offsetWidth - parseFloat($("#div1").css("margin"));
+		}
+		if (t > offsetParent.clientHeight - this.oDiv.offsetHeight) {
+			t = offsetParent.clientHeight - this.oDiv.offsetHeight - parseFloat($("#div1").css("margin"));
+		}
+		if (t < 0) {
+			t = 0 - parseFloat($("#div1").css("margin"));
+		}
+		this.oDiv.style.left = l + "px";
+		this.oDiv.style.top = t + "px";
+	}
+	Drag.prototype.fnUp = function(e) {
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+
+
+
+</script>
+
+<body>
+
+<div style="width: 200px;height: 400px;background: green" id="div2">
+	<div id="div1"></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style>
+        .inner { width: 984px; height: 610px; margin: 0 auto; position: relative;}
+        .hd_top { position: absolute; left: 518px; top: 18px;width: 470px; height: 23px; background: url(http://img3.icson.com/template/2013/05/15/136862293919661200_a_10.png) no-repeat 0 -1362px; z-index: 40;}
+        .hd_top a { display: block; float: left;width: 92px; height: 25px; margin-right: 15px;}
+        .hd_top a i { float: right;width: 25px; height: 25px; background: url(http://img3.icson.com/template/2013/05/15/136858721992986200_a_2.png);}
+        .hd_top .fav_link i { background-position: 0 -361px;}
+        .hd_top .share_link { width: 94px; margin-right: 87px;}
+        .hd_top .share_link i { background-position: -25px -361px;}
+        .hd_top .qqweibo_link { width: 25px; margin-right: 5px;}
+        .hd_top .qqweibo_link i { background-position: -50px -361px;}
+        .hd_top .sinaweibo_link { width: 25px; margin-right: 16px;}
+        .hd_top .sinaweibo_link i { background-position: -75px -361px;}
+        .hd_top .desc_link { width: 100px;margin-right: 0;}
+        .hd_top .desc_link i { background-position: -100px -361px;}
+
+        .hd_top .fav_link:hover i { -webkit-animation: fav_link 0.8s linear infinite;}
+        .hd_top .share_link:hover i { -webkit-animation: share_link 0.8s steps(10) infinite;}
+        .hd_top .qqweibo_link:hover i { -webkit-animation: qqweibo_link 0.8s linear infinite;}
+        .hd_top .sinaweibo_link:hover i { -webkit-animation: sinaweibo_link 0.8s steps(3) infinite;}
+        .hd_top .desc_link:hover i { -webkit-animation: desc_link 0.8s linear infinite;}
+            /*HTML5效果*/
+            /*--- fav_link ---*/
+        @-webkit-keyframes fav_link { 0% {-webkit-transform: rotate(0);} 100% {-webkit-transform: rotate(365deg);} }
+            /*--- share_link ---*/
+        @-webkit-keyframes share_link { 0% {background-position: 0 -386px;} 100% {background-position: -250px -386px;} }
+            /*--- qqweibo_link ---*/
+        @-webkit-keyframes qqweibo_link { 0% {-webkit-transform: rotate(-15deg);} 50% {-webkit-transform: rotate(15deg);} 100% {-webkit-transform: rotate(-15deg);} }
+            /*--- sinaweibo_link ---*/
+        @-webkit-keyframes sinaweibo_link { 0% {background-position: 0 -411px;} 100% {background-position: -75px -411px;} }
+            /*--- desc_link ---*/
+        @-webkit-keyframes desc_link { 0% {-webkit-transform: translateY(-2px);} 33% {-webkit-transform: translateY(2px);} 66% {-webkit-transform: translateY(0px);} 100% {-webkit-transform: translateY(-2px);} }
+    </style>
+</head>
+
+<body>
+<div class="inner">
+    <div class="hd_top">
+        <a ytag="20002" href="javascript:;"  class="fav_link"><i></i></a>
+        <a ytag="20003" href="javascript:;"  class="share_link"><i></i></a>
+        <a ytag="20004" href="javascript:;"  class="qqweibo_link"><i></i></a>
+        <a ytag="20005" href="javascript:;"  class="sinaweibo_link"><i></i></a>
+        <a ytag="20006" href="javascript:;"  class="desc_link"><i></i></a>
+    </div>
+</div>
+</body>
+</html>

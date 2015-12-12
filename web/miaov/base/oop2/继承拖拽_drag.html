@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style>
+	#div1 {
+		width: 100px;
+		height: 100px;
+		background: red;
+		position: absolute
+	}
+
+	#div2 {
+		width: 100px;
+		height: 100px;
+		background: yellow;
+		position: absolute;
+		left: 100px
+	}
+</style>
+<script>
+	window.onload = function () {
+		var drag = new Drag("div1");
+		drag.init();
+	}
+	function Drag(id) {
+		this.obj = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+	}
+	Drag.prototype.init = function () {
+		var _this = this;
+		_this.obj.onmousedown = function () {
+			_this.fnDown();
+		}
+	}
+	Drag.prototype.fnDown = function (e) {
+		var _this = this;
+		var e = e || window.event;
+		this.disX = e.clientX - this.obj.offsetLeft;
+		this.disY = e.clientY - this.obj.offsetTop;
+		document.onmousemove = function (e) {
+			_this.fnMove(e);
+		}
+		document.onmouseup = function (e) {
+			_this.fnUp(e);
+		}
+		return false;
+	}
+	Drag.prototype.fnMove = function (e) {
+		var l =  e.clientX - this.disX;
+		var t =  e.clientY - this.disY;
+		this.obj.style.left = l+"px";
+		this.obj.style.top = t+"px";
+	}
+	Drag.prototype.fnUp = function () {
+		document.onmousemove = null;
+		document.onmouseup = null;
+	}
+</script>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+
+</body>
+</html>

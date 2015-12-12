@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta charset="utf-8">-->
+    <title></title>
+    <script src="jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            // 为div中的所有p元素绑定click事件处理程序
+            // 只有n2、n3可以触发该事件
+            $("div").on("click", "p", function(){
+                // 这里的this指向触发点击事件的p元素(Element)
+                alert( $(this).text() );
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div id="n1">
+    <p id="n2"><span>CodePlayer</span></p>
+    <p id="n3"><span>专新</span></p>
+    <em id="n4">http://www.365mini.com</em>
+</div>
+<p id="n5">Google</p>
+</body>
+</html>
